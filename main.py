@@ -191,7 +191,7 @@ class CompsPopupView(GridLayout):
 
     def create_filename_popup(self, *args):
         filename_popup_view = FileNamePopupView()
-        filename_popup = Popup(title="Enter Filename", content=filename_popup_view, size_hint=(.4,.3))
+        filename_popup = Popup(title="Enter Filename", content=filename_popup_view, size_hint=(.4, .3))
         filename_popup_view.bind_popup(filename_popup)
         filename_popup_view.bind_comps_view(self)
         filename_popup.open()

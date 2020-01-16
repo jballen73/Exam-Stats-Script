@@ -3,3 +3,4 @@
 *.txt
 *.spec
 /__pycache__/*
+!requirements.txt
