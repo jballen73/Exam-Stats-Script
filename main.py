@@ -314,8 +314,8 @@ class PopupView(GridLayout):
         self.popup.dismiss()
 
     def clear_scores_and_close(self, *args):
-        text_views = self.children[:-6]
-        for i in range(len(text_views) - 1, 0, -3):
+        text_views = self.children[:-3]
+        for i in range(len(text_views) - 1, 3, -3):
             question_view = text_views[i]
             score_view = text_views[i-1]
             std_view = text_views[i-2]
