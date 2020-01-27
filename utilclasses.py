@@ -72,12 +72,15 @@ class Question:
         for group in right:
             if group not in self.groups:
                 return "{0}: N/A".format(str(comparison))
+
         if len(left) == 1 and len(right) == 1:
-            return "{0}: p = {1}".format(str(comparison), self.compare_groups(left[0], right[0]))
+            p, g1m, g1s, g2m, g2s = self.compare_groups(left[0], right[0])
+            return "{}: p = {}, ({:.2f}, {:.2f} vs {:.2f}, {:.2f})".format(str(comparison), p, g1m, g1s, g2m, g2s)
         else:
             left = sum(list(map(lambda x: self.stats[x], left)))
             right = sum(list(map(lambda x: self.stats[x], right)))
-            return "{0}: p = {1}".format(str(comparison), self.compare_groups(left, right))
+            p, g1m, g1s, g2m, g2s = self.compare_groups(left, right)
+            return "{}: p = {}, ({:.2f}, {:.2f} vs {:.2f}, {:.2f})".format(str(comparison), p, g1m, g1s, g2m, g2s)
 
     def compare_groups(self, group1, group2, equal_var=True):
         if isinstance(group1, Stats) and isinstance(group2, Stats):
@@ -101,7 +104,7 @@ class Question:
             g2n = stat.n
         from scipy.stats import ttest_ind_from_stats
         t, p = ttest_ind_from_stats(g1m, g1s, g1n, g2m, g2s, g2n, equal_var=equal_var)
-        return p
+        return p, g1m, g1s, g2m, g2s
 
 class FullStatistics:
     def __init__(self, data, comparisons, from_gui=False):
