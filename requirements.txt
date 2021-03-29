@@ -12,7 +12,7 @@ Kivy-examples==1.11.1
 Kivy-Garden==0.1.4
 numpy==1.18.1
 pefile==2019.4.18
-Pygments==2.5.2
+Pygments==2.7.4
 PyInstaller==3.6
 pypiwin32==223
 pywin32==227
